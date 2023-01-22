@@ -1,6 +1,8 @@
 package com.example.inlamningsuppgift_g_tdd.service;
 
 
+import com.example.inlamningsuppgift_g_tdd.entities.AppUser;
+import com.example.inlamningsuppgift_g_tdd.repo.UserRepo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -61,7 +61,7 @@ public void onInit(){
        //When
        IllegalArgumentException err = assertThrows(IllegalArgumentException.class, () -> authService.authenticate("tester", "test123"));
        //then
-       assertEquals("No user with that username exists in the ",err.getMessage());
+       assertEquals("No user with that username exists in the db",err.getMessage());
     }
 
     @Test
@@ -74,7 +74,7 @@ public void onInit(){
         //when
         IllegalArgumentException err = assertThrows(IllegalArgumentException.class, () -> authService.authenticate("test", "test1232"));
         // then
-        assertEquals("Wrong Passwor",err.getMessage());
+        assertEquals("Wrong Password",err.getMessage());
 
     }
 

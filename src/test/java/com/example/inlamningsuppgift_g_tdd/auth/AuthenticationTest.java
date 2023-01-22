@@ -14,7 +14,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 
@@ -31,18 +31,17 @@ public class AuthenticationTest {
     private final static long id = 1;
     private final static String username = "test";
     private final static String password = "test123";
-    @ParameterizedTest
-    @CsvSource(value = {"test,test1234","testare,test123"})
-    public void testLogin(String testUsername, String testPassword) throws Exception {
-        AppUser appUser = new AppUser(id,username, password);
+
+    @Test
+    public void testLogin_ifWorking_returnTrue()  {
+        //Given
+        AppUser appUser = new AppUser(id, username, password);
         when(userRepo.findUserByUsername("test")).thenReturn(Optional.of(appUser));
 
-        assertTrue(userService.login("test", "password"));
-        assertThrows(IllegalArgumentException.class, () -> userService.login(testUsername, testPassword));
-
+        //When, then
+        assertTrue(userService.authenticate("test", "test123"));
 
     }
 
-    private void assertTrue(boolean login) {
-    }
+
 }

@@ -18,7 +18,12 @@ public class UserService {
         return userRepo.findUserByUsername(username).orElseThrow();
     }
 
-    public boolean authenticate(String test, String password) {
+    public boolean authenticate(String username, String password) {
+        AppUser appUser = userRepo.findUserByUsername(username).orElseThrow();
+        if(appUser.getUsername() != null && appUser.getPassword().equals(password)){
+            return true;
+        }
+
         return false;
     }
 }
